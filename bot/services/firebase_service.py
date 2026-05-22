@@ -1,3 +1,4 @@
+import json
 import firebase_admin
 from firebase_admin import credentials, firestore
 from config import FIREBASE_CREDENTIALS
@@ -9,7 +10,17 @@ def init_firebase():
     if db is not None:
         return db
     try:
-        cred = credentials.Certificate(FIREBASE_CREDENTIALS)
+        # Check if credentials string is JSON
+        if FIREBASE_CREDENTIALS.strip().startswith('{'):
+            try:
+                cred_dict = json.loads(FIREBASE_CREDENTIALS)
+                cred = credentials.Certificate(cred_dict)
+            except Exception as json_err:
+                print(f"Failed to parse FIREBASE_CREDENTIALS as JSON, attempting file path: {json_err}")
+                cred = credentials.Certificate(FIREBASE_CREDENTIALS)
+        else:
+            cred = credentials.Certificate(FIREBASE_CREDENTIALS)
+            
         firebase_admin.initialize_app(cred)
         db = firestore.client()
         print("Firebase initialized successfully.")
