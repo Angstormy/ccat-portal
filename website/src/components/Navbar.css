@@ -8,17 +8,63 @@
   z-index: 1000;
   padding: 12px 24px;
   border-radius: 100px;
-  background: var(--navbar-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(0, 229, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255,255,255,0.02);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: borderGlow 6s linear infinite alternate;
+}
+
+@keyframes borderGlow {
+  0% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.2); border-color: rgba(0, 229, 255, 0.3); }
+  50% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(138, 43, 226, 0.4); border-color: rgba(138, 43, 226, 0.4); }
+  100% { box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 229, 255, 0.2); border-color: rgba(0, 229, 255, 0.3); }
 }
 
 .navbar:hover {
-  border-color: rgba(0, 229, 255, 0.2);
-  box-shadow: 0 4px 40px rgba(0, 119, 255, 0.15), inset 0 0 0 1px rgba(255,255,255,0.02);
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(0, 229, 255, 0.5);
+  box-shadow: 0 4px 40px rgba(0, 119, 255, 0.25), inset 0 0 0 1px rgba(255,255,255,0.02);
+}
+
+:root[data-theme='light'] .navbar,
+.light .navbar {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(0, 119, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05), inset 0 0 0 1px rgba(255,255,255,0.4);
+}
+
+:root[data-theme='light'] .navbar:hover,
+.light .navbar:hover {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(0, 119, 255, 0.4);
+}
+
+:root[data-theme='light'] .nav-link:hover,
+.light .nav-link:hover {
+  color: #4f46e5;
+  background: rgba(79, 70, 229, 0.1);
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.2);
+  text-shadow: none;
+}
+
+.navbar.navbar-scrolled {
+  background: var(--navbar-bg);
+  backdrop-filter: blur(30px) brightness(0.7);
+  -webkit-backdrop-filter: blur(30px) brightness(0.7);
+  border-bottom: 1px solid rgba(0, 229, 255, 0.4);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), inset 0 -1px 0 rgba(0, 229, 255, 0.1);
+  padding: 8px 24px; /* Slightly shrink height on scroll */
+}
+
+:root[data-theme='light'] .navbar.navbar-scrolled,
+.light .navbar.navbar-scrolled {
+  backdrop-filter: blur(30px) brightness(0.95);
+  -webkit-backdrop-filter: blur(30px) brightness(0.95);
+  border-bottom: 1px solid rgba(0, 119, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), inset 0 -1px 0 rgba(0, 119, 255, 0.1);
 }
 
 .nav-container {
@@ -38,6 +84,14 @@
   gap: 10px;
 }
 
+.nav-logo-img {
+  width: 28px;
+  height: 28px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
 .nav-links {
   display: flex;
   gap: 32px;
@@ -50,28 +104,48 @@
   font-weight: 500;
   font-size: 0.95rem;
   position: relative;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  padding: 6px 12px;
+  border-radius: 20px;
 }
 
 .nav-link:hover {
-  color: var(--text-highlight);
-  text-shadow: none; /* remove global text shadow from a tags */
+  color: #fff;
+  background: rgba(0, 229, 255, 0.15);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+  text-shadow: none;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -6px;
-  left: 0;
-  background: var(--gradient-primary);
-  transition: width 0.3s ease;
-  border-radius: 2px;
+.nav-link-announcements {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.nav-link:hover::after {
-  width: 100%;
+.nav-badge-new {
+  background: linear-gradient(135deg, #00e5ff, #8a2be2);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: pulseBadge 2s infinite;
+}
+
+@keyframes pulseBadge {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(0, 229, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 229, 255, 0);
+  }
 }
 
 .nav-btn {
@@ -128,10 +202,14 @@
 
 /* Mobile Responsiveness */
 @media (max-width: 600px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
   .navbar {
     top: 12px;
     width: calc(100% - 24px);
-    padding: 8px 16px;
+    padding: 8px 16px !important;
     border-radius: 50px;
   }
   

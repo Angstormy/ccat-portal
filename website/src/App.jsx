@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import SectionPage from './pages/SectionPage';
 import SubjectPage from './pages/SubjectPage';
+import AnnouncementsPage from './pages/AnnouncementsPage';
 import NotFound from './pages/NotFound';
 
 const MainLayout = () => (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/section/:sectionId" element={<SectionPage />} />
           <Route path="/section/:sectionId/subject/:subjectId" element={<SubjectPage />} />
+          <Route path="/announcements" element={<AnnouncementsPage />} />
           
           {/* Redirect old Mini App link to main layout so it looks exactly like original */}
           <Route path="/miniapp" element={<Navigate to="/" replace />} />

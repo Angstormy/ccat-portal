@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "CDAC CCAT Registration Started",
+    "date": "2026-05-28",
+    "category": "Registration",
+    "content": "CDAC CCAT Registration for August / September 2026 batch has officially started. Register now to secure your spot.",
+    "link": "https://cdac.in/index.aspx?id=edu_acts_PGDiplomaAdmission",
+    "isPinned": true
+  },
+  {
+    "id": 2,
+    "title": "Exam Dates Announced",
+    "date": "2026-05-20",
+    "category": "Exam",
+    "content": "The examination dates for the upcoming CCAT have been finalized. Please check your dashboard for individual scheduling details.",
+    "link": null,
+    "isPinned": false
+  },
+  {
+    "id": 3,
+    "title": "New Mock Tests Available",
+    "date": "2026-05-15",
+    "category": "Resources",
+    "content": "Will be available soon",
+    "link": "/section/1",
+    "isPinned": false
+  }
+]
