@@ -9,8 +9,9 @@ const MiniAppHome = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    WebApp.BackButton.hide();
-    
+    if (WebApp.BackButton) {
+      WebApp.BackButton.hide();
+    }
     const fetchSections = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, 'sections'));
