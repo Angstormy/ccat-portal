@@ -101,8 +101,16 @@ const SubjectPage = () => {
       setActiveTokens(prev => ({ ...prev, [pdfObj.id]: tokenString }));
       
       let botUsername = import.meta.env.VITE_BOT_USERNAME;
-      if (botUsername) {
-        window.open(`https://t.me/${botUsername.replace('@', '')}?start=${tokenString}`, '_blank');
+      const tgUrl = `https://t.me/${botUsername?.replace('@', '')}?start=${tokenString}`;
+      
+      const WebApp = window.Telegram?.WebApp;
+      if (WebApp && WebApp.initData !== '') {
+        // We are inside Telegram Mini App! Instantly open the bot and close the mini app.
+        if (WebApp.HapticFeedback) WebApp.HapticFeedback.notificationOccurred('success');
+        WebApp.openTelegramLink(tgUrl);
+      } else if (botUsername) {
+        // Regular browser: open in new tab
+        window.open(tgUrl, '_blank');
       }
       
       setDownloadingId(null);
