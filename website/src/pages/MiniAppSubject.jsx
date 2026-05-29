@@ -21,13 +21,15 @@ const MiniAppSubject = () => {
   const [downloadingId, setDownloadingId] = useState(null);
 
   useEffect(() => {
-    WebApp.BackButton.show();
-    const handleBack = () => navigate(`/miniapp/section/${sectionId}`);
-    WebApp.BackButton.onClick(handleBack);
-    
-    return () => {
-      WebApp.BackButton.offClick(handleBack);
-    };
+    if (WebApp.BackButton) {
+      WebApp.BackButton.show();
+      const handleBack = () => navigate(`/miniapp/section/${sectionId}`);
+      WebApp.BackButton.onClick(handleBack);
+      
+      return () => {
+        WebApp.BackButton.offClick(handleBack);
+      };
+    }
   }, [navigate, sectionId]);
 
   useEffect(() => {
@@ -60,7 +62,9 @@ const MiniAppSubject = () => {
 
   const handleDownload = async (pdfObj) => {
     setDownloadingId(pdfObj.id);
-    WebApp.HapticFeedback.impactOccurred('light');
+    if (WebApp.HapticFeedback) {
+      WebApp.HapticFeedback.impactOccurred('light');
+    }
 
     // Inside Telegram, we can skip the countdown or keep it very short.
     // Let's just generate the token and send it immediately.
@@ -77,7 +81,9 @@ const MiniAppSubject = () => {
         used: false
       });
 
-      WebApp.HapticFeedback.notificationOccurred('success');
+      if (WebApp.HapticFeedback) {
+        WebApp.HapticFeedback.notificationOccurred('success');
+      }
       
       // Close WebApp and trigger bot with start payload
       const botUsername = import.meta.env.VITE_BOT_USERNAME || '';
@@ -89,7 +95,9 @@ const MiniAppSubject = () => {
       
     } catch (error) {
       console.error("Token generation failed:", error);
-      WebApp.HapticFeedback.notificationOccurred('error');
+      if (WebApp.HapticFeedback) {
+        WebApp.HapticFeedback.notificationOccurred('error');
+      }
       WebApp.showAlert("Failed to prepare download. Please try again.");
     } finally {
       setDownloadingId(null);

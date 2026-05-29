@@ -20,13 +20,15 @@ const MiniAppSection = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    WebApp.BackButton.show();
-    const handleBack = () => navigate('/miniapp');
-    WebApp.BackButton.onClick(handleBack);
-    
-    return () => {
-      WebApp.BackButton.offClick(handleBack);
-    };
+    if (WebApp.BackButton) {
+      WebApp.BackButton.show();
+      const handleBack = () => navigate('/miniapp');
+      WebApp.BackButton.onClick(handleBack);
+      
+      return () => {
+        WebApp.BackButton.offClick(handleBack);
+      };
+    }
   }, [navigate]);
 
   useEffect(() => {
