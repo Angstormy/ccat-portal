@@ -32,7 +32,8 @@ async def start_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         ]
         reply_markup = InlineKeyboardMarkup(keyboard)
 
-        banner_path = os.path.join("assets", "banner.png")
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        banner_path = os.path.join(base_dir, "assets", "banner.png")
         if os.path.exists(banner_path):
             try:
                 with open(banner_path, 'rb') as photo:
