@@ -1,38 +1,63 @@
 .announcement-bar {
-  position: fixed;
-  top: 85px;
+  position: absolute;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
-  width: calc(100% - 32px);
+  width: 90vw;
   max-width: 1000px;
   z-index: 998;
-  background: rgba(15, 23, 42, 0.95); /* Solid dark background to prevent text overlap */
-  border: 1px solid rgba(0, 229, 255, 0.3);
-  border-radius: 16px;
-  padding: 12px 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 229, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   display: flex;
   justify-content: center;
   align-items: center;
   animation: slideDown 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.announcement-bar:hover {
-  border-color: rgba(0, 229, 255, 0.6);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 229, 255, 0.25);
-}
-
 .announcement-content {
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
   gap: 14px;
-  text-align: center;
 }
+
+.marquee-container {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0; /* Ensures it shrinks properly in flexbox */
+}
+
+.marquee-link {
+  text-decoration: none;
+  display: inline-block;
+  padding-left: 100%;
+  animation: scrollText 15s linear infinite;
+}
+
+.marquee-container:hover .marquee-link {
+  animation-play-state: paused;
+}
+
+.marquee-content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 .announcement-badge {
   background: linear-gradient(90deg, #00e5ff, #8a2be2);
@@ -47,33 +72,22 @@
   box-shadow: 0 2px 10px rgba(0, 229, 255, 0.4);
 }
 
-.announcement-content p {
+.marquee-text {
   margin: 0;
-  font-size: 0.95rem;
-  color: #f8fafc;
-  font-family: var(--font-body, sans-serif);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  line-height: 1.4;
-}
-
-.announcement-btn {
-  background: rgba(0, 229, 255, 0.1);
-  color: #00e5ff;
-  text-decoration: none;
-  padding: 6px 16px;
-  border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 1.1rem;
+  font-family: var(--font-heading, sans-serif);
   font-weight: 700;
-  border: 1px solid rgba(0, 229, 255, 0.4);
-  transition: all 0.2s ease;
-  white-space: nowrap;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #38bdf8, #818cf8, #c084fc, #e879f9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 20px rgba(129, 140, 248, 0.3);
+  text-transform: uppercase;
 }
 
-.announcement-btn:hover {
-  background: rgba(0, 229, 255, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 229, 255, 0.3);
+.marquee-link:hover .marquee-text {
+  color: #00e5ff;
+  text-decoration: underline;
 }
 
 @keyframes slideDown {
@@ -89,10 +103,8 @@
 
 @media (max-width: 768px) {
   .announcement-bar {
-    top: 70px;
+    top: 85px;
     width: calc(100% - 24px);
-    padding: 14px 16px;
-    border-radius: 12px;
   }
   
   .announcement-content {
@@ -100,15 +112,14 @@
     gap: 10px;
   }
 
-  .announcement-content p {
-    font-size: 0.9rem;
-  }
+
   
-  .announcement-btn {
-    padding: 8px 20px;
-    font-size: 0.9rem;
+  .marquee-container {
     width: 100%;
-    text-align: center;
-    max-width: 200px;
+    margin-bottom: 5px;
+  }
+
+  .marquee-text {
+    font-size: 0.9rem;
   }
 }

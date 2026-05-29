@@ -21,8 +21,8 @@ const PG_COURSES = [
   { name: 'PGCP-AC', full: 'Advanced Computing', mode: 'Online or Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-BDA', full: 'Big Data Analytics', mode: 'Online or Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-AI', full: 'Artificial Intelligence', mode: 'Online or Physical', min: '60%', cat: 'Category II' },
-  { name: 'PGCP-MC', full: 'Mobile Computing', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-ITISS', full: 'IT Infrastructure, Systems & Security', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
+  { name: 'PGCP-MC', full: 'Mobile Computing', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-ASSD', full: 'Advanced Secure Software Development', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-HPCSA', full: 'HPC System Administration', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-FBD', full: 'FinTech & Blockchain Development', mode: 'Fully Online Only', min: '55%', cat: 'Category II' },
@@ -30,6 +30,26 @@ const PG_COURSES = [
   { name: 'PGCP-RAT', full: 'Robotics & Allied Technologies', mode: 'Fully Physical', min: '55%', cat: 'Category II' },
   { name: 'PGCP-ESD', full: 'Embedded Systems Design', mode: 'Fully Physical', min: '55%', cat: 'Category III' },
   { name: 'PGCP-VLSI', full: 'VLSI Design', mode: 'Fully Physical', min: '55%', cat: 'Category III' },
+];
+const IMPORTANT_DATES = [
+  { no: 'a', event: 'Beginning of Online Registration and Application for C-CAT', date: '25 May 2026' },
+  { no: '', event: 'Pan-CDAC Online Q&A Session on PG Certificate Programmes and C-CAT Application Process', date: '9 June 2026 (3 pm)' },
+  { no: 'b', event: 'Closing of Online Registration & Application, and Payment of Examination Fee for C-CAT', date: '23 June 2026' },
+  { no: 'c', event: 'Downloading of C-CAT Admit Cards', date: '30 June - 04 July 2026' },
+  { no: 'd', event: 'C-DAC\'s Common Admission Test (C-CAT) at the Test Centres', date: '04 July 2026 & 05 July 2026' },
+  { no: 'e', event: 'Announcement of C-CAT Ranks', date: '16 July 2026' },
+  { no: 'f', event: 'Online Selection of Courses and Centres (1st Counselling)', date: '16 - 23 July 2026' },
+  { no: '', event: 'Pan-CDAC Online Q&A Session on C-CAT Counselling and Seat Allocation Processes', date: '17 July 2026 (3 pm)' },
+  { no: 'g', event: 'Declaration of First Round of Seat Allocation', date: '25 July 2026' },
+  { no: 'h', event: 'Last Date of Payment of first installment course fee (Rs 15,000 + GST) for candidates allocated seats through the first round', date: '31 July 2026 (till 5pm)' },
+  { no: 'i', event: 'Declaration of Second Round of Seat Allocation', date: '2 August 2026' },
+  { no: 'j', event: 'Last Date of Payment of first installment course fee (Rs 15,000 + GST) for candidates allocated seats first time through the second round', date: '6 August 2026 (till 5pm)' },
+  { no: 'k', event: 'Payment of caution deposit (Rs 15,000 + GST) and Online Selection of Courses and Centres (2nd Counselling)', date: '7 - 12 August, 2026 (till 5 pm)' },
+  { no: 'l', event: 'Declaration of Third Round of Seat Allocation (based on 2nd Counselling)', date: '13 August 2026' },
+  { no: 'm', event: 'Last Date of Payment of Balance Course Fee', date: '20 August 2026' },
+  { no: 'n', event: 'Last Date of Registration of Students', date: '21 August 2026' },
+  { no: 'o', event: 'Start of PG Certificate Programmes across India', date: '24 August 2026' },
+  { no: 'p', event: 'End of PG Certificate Programmes across India', date: '6 February 2027' },
 ];
 
 const Home = () => {
@@ -190,7 +210,7 @@ const Home = () => {
                   className={`info-tab-btn ${activeTab === 'timeline' ? 'active' : ''}`}
                   onClick={() => setActiveTab('timeline')}
                 >
-                  <Calendar size={20} /> Admission Timeline
+                  <Calendar size={20} /> Important Dates
                 </button>
               </div>
 
@@ -220,30 +240,21 @@ const Home = () => {
                     <table className="info-table">
                       <thead>
                         <tr>
-                          <th>Category</th>
-                          <th>Applicable Sections</th>
-                          <th>PG Diploma Course Options</th>
-                          <th>Registration Fee</th>
+                          <th>Course Category</th>
+                          <th>C-CAT Paper(s)</th>
+                          <th>C-CAT Fee</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td><strong>Category I</strong></td>
-                          <td>Section A</td>
-                          <td>PG Diploma in Geoinformatics (PG-DGi)</td>
-                          <td>₹ 1,350/-</td>
+                          <td><strong>II</strong></td>
+                          <td>A+B</td>
+                          <td>Rs 1550/-</td>
                         </tr>
                         <tr>
-                          <td><strong>Category II</strong></td>
-                          <td>Section A + B</td>
-                          <td>Advanced Computing (DAC), Big Data (DBDA), AI (DAI), Mobile (DMC), IT Security (DITISS), IoT (DIoT), Cyber Security (DCSF), etc.</td>
-                          <td>₹ 1,550/-</td>
-                        </tr>
-                        <tr>
-                          <td><strong>Category III</strong></td>
-                          <td>Section A + B + C</td>
-                          <td>Embedded Systems Design (DESD), VLSI Design (DVLSI), Robotics (DRAT), etc.</td>
-                          <td>₹ 1,750/-</td>
+                          <td><strong>III</strong></td>
+                          <td>A+B+C</td>
+                          <td>Rs 1750/-</td>
                         </tr>
                       </tbody>
                     </table>
@@ -253,7 +264,8 @@ const Home = () => {
                     <Info size={20} color="var(--accent)" className="helper-alert-box-icon" />
                     <div className="helper-alert-box-content">
                       <h5>Important Fee Notes</h5>
-                      <p>The registration fee is non-refundable and must be paid online using credit/debit cards or net banking. Candidates choosing Category III can also write Category I and II exams without extra fees if they are eligible.</p>
+                      <p><strong style={{ color: 'var(--accent)' }}>Note: Category I has been removed.</strong></p>
+                      <p style={{ marginTop: '8px' }}>The registration fee is non-refundable and must be paid online using credit/debit cards or net banking. Candidates choosing Category III can also write Category II exams without extra fees if they are eligible.</p>
                     </div>
                   </div>
 
@@ -442,31 +454,41 @@ const Home = () => {
                 <div style={{ animation: 'fadeIn 0.4s ease-out forwards' }}>
                   <h3 style={{ fontSize: '1.5rem', marginBottom: '16px', color: 'var(--text-highlight)' }}>Counseling & Seat Allocation</h3>
                   <p style={{ color: 'var(--text-main)', marginBottom: '24px' }}>
-                    Ranks are declared based on candidate performance. Seat allocation is managed online via a centralized multi-round counseling process.
+                    C-DAC's PG Certificate Programmes admission process has two counselling sessions and three rounds of seat allocations. Counselling means online filling of preferences of courses and training centres by the candidates.
                   </p>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: '24px', marginBottom: '32px' }}>
-                    <div className="glass-card" style={{ padding: '24px' }}>
-                      <h4 style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '12px' }}>How Ranks are Declared</h4>
-                      <p style={{ fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.5' }}>
-                        Depending on the sections attempted (A, B, or C), candidates receive individual ranks:
-                      </p>
-                      <ul style={{ listStyleType: 'disc', paddingLeft: '20px', marginTop: '8px', color: 'var(--text-main)', fontSize: '0.9rem' }}>
-                        <li><strong>Rank A:</strong> Eligible for Category I courses</li>
-                        <li><strong>Rank B:</strong> Eligible for Category I & II courses</li>
-                        <li><strong>Rank C:</strong> Eligible for Category I, II & III courses</li>
-                      </ul>
-                    </div>
+                  <div className="glass-card" style={{ padding: '24px', marginBottom: '24px' }}>
+                    <ul style={{ listStyleType: 'disc', paddingLeft: '20px', color: 'var(--text-main)', fontSize: '0.95rem', lineHeight: '1.6' }}>
+                      <li style={{ marginBottom: '12px' }}>
+                        <strong>There are two rounds of seat allocations based on the first counselling.</strong> This means that using the course-centre preferences given by the candidates during the first choice filling, two rounds of seat allocations (Round 1 and Round 2) will be done.
+                      </li>
+                      <li style={{ marginBottom: '12px' }}>
+                        Depending on their C-CAT ranks, candidates will be allocated seats strictly based on the order of preferences of courses and centres given by them during the counselling. If candidates get their first preference in the first round of seat allocation itself, then that will be their final allocated seat and there will be no change for them in the second round of seat allocations.
+                      </li>
+                      <li style={{ marginBottom: '12px' }}>
+                        Once the first installment is paid, candidates will have the option to lock/freeze the Round 1 allocated seat even if it is not their first preference. If candidates do not lock/freeze their lower preferred seat, they will be considered for Round 2 seat allocation after they pay the first installment fee. The seats allocated in the second round are final and there will be no further change in them.
+                      </li>
+                      <li>
+                        <strong>Through the second counselling</strong>, candidates who have not got/confirmed admission are given one last chance to online fill their preferences of courses and training centres for the vacant seats that arise after the second round of admissions. The third round of seat allocation is based on the second counselling.
+                      </li>
+                    </ul>
+                  </div>
 
-                    <div className="glass-card" style={{ padding: '24px' }}>
-                      <h4 style={{ color: 'var(--accent)', fontSize: '1.2rem', marginBottom: '12px' }}>Locking vs Freezing Seats</h4>
-                      <p style={{ fontSize: '0.95rem', color: 'var(--text-main)', lineHeight: '1.5' }}>
-                        When a seat is allocated, you must pay a caution deposit of ₹10,000 + GST to secure it. Then you can:
-                      </p>
-                      <ul style={{ listStyleType: 'disc', paddingLeft: '20px', marginTop: '8px', color: 'var(--text-main)', fontSize: '0.9rem' }}>
-                        <li><strong>Freeze Choice:</strong> Opt out of further seat upgradations to lock the current training center.</li>
-                        <li><strong>Keep Open:</strong> Allow the system to upgrade your seat in the next round if high-priority choices open up.</li>
+                  <div className="helper-alert-box" style={{ marginBottom: '32px' }}>
+                    <Info size={20} color="var(--accent)" className="helper-alert-box-icon" />
+                    <div className="helper-alert-box-content">
+                      <h5>Important Notes</h5>
+                      <ul style={{ listStyleType: 'none', padding: 0, marginTop: '8px', color: 'var(--text-main)', fontSize: '0.95rem' }}>
+                        <li style={{ marginBottom: '8px' }}><strong>(1)</strong> Once the first installment is paid, candidates will have the option to lock/freeze the Round 1 allocated seat even if it is not their first preference.</li>
+                        <li style={{ marginBottom: '8px' }}><strong>(2)</strong> If candidates do not lock/freeze their lower preferred seat, they will be considered for Round 2 seat allocation after they pay the first installment fee.</li>
+                        <li style={{ marginBottom: '8px', color: 'var(--accent)' }}><strong>(3) Note: Category 1 has been removed from the admission process.</strong></li>
                       </ul>
+                      <p style={{ marginTop: '12px', fontSize: '0.9rem' }}>
+                        Based on the C-CAT ranks, admissions to various courses at different training centres are offered in the order of preferences given by the candidate. Therefore candidates must take utmost care while filling the order of preference. Under any circumstance, a candidate will not be allocated another course/centre which was not given as a preference during the counselling stage.
+                      </p>
+                      <p style={{ marginTop: '12px', fontSize: '0.9rem', color: 'var(--text-highlight)' }}>
+                        <strong>Important Note:</strong> A candidate cannot join a lower preferred choice if he/she is allocated a higher preference in any round of seat allocation.
+                      </p>
                     </div>
                   </div>
 
@@ -518,27 +540,35 @@ const Home = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '60px 20px',
-                  textAlign: 'center',
+                  padding: '40px 20px',
                   background: 'rgba(255, 255, 255, 0.02)',
                   borderRadius: '20px',
-                  border: '1px dashed var(--glass-border)',
-                  minHeight: '300px'
+                  border: '1px solid var(--glass-border)',
                 }}>
-                  <Calendar size={48} color="var(--accent)" style={{ marginBottom: '24px', opacity: 0.8 }} />
                   <h3 style={{ fontSize: '1.8rem', marginBottom: '16px', color: 'var(--text-highlight)', fontWeight: '600' }}>
-                    Admission Timeline & Phases
+                    Important Dates & Phases
                   </h3>
-                  <p style={{ 
-                    color: 'var(--text-main)', 
-                    fontSize: '1.1rem', 
-                    maxWidth: '500px', 
-                    margin: '0 auto',
-                    lineHeight: '1.6'
-                  }}>
-                    Will be Updated Soon for New Batch
-                  </p>
+                  
+                  <div className="info-table-wrapper" style={{ width: '100%', marginTop: '24px' }}>
+                    <table className="info-table" style={{ textAlign: 'left', width: '100%' }}>
+                      <thead>
+                        <tr>
+                          <th style={{ width: '60px', textAlign: 'center' }}>No.</th>
+                          <th>Event</th>
+                          <th style={{ width: '220px' }}>Date</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {IMPORTANT_DATES.map((item, index) => (
+                          <tr key={index}>
+                            <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{item.no}</td>
+                            <td style={{ fontStyle: item.no === '' ? 'italic' : 'normal' }}>{item.event}</td>
+                            <td style={{ fontWeight: '500' }}>{item.date}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               )}
             </div>

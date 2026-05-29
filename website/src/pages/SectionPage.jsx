@@ -262,7 +262,7 @@ const SectionPage = () => {
               ) : (
                 <div style={{ textAlign: 'center', padding: '60px 0', background: 'var(--glass-bg)', borderRadius: '20px', border: '1px dashed var(--glass-border)' }}>
                   <p style={{ color: 'var(--text-main)', fontSize: '1.1rem' }}>
-                    {subjects.length === 0 ? "No subjects available for this section yet." : "No subjects match your search query."}
+                    {subjects.length === 0 ? "Will Be Available Soon" : "No subjects match your search query."}
                   </p>
                 </div>
               )}
