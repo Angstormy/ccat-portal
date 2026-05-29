@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Announcement from './components/Announcement';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import SectionPage from './pages/SectionPage';
@@ -10,7 +11,8 @@ import NotFound from './pages/NotFound';
 const MainLayout = () => (
   <>
     <Navbar />
-    <main style={{ marginTop: '80px', paddingBottom: '80px', flex: 1 }}>
+    <Announcement />
+    <main style={{ marginTop: '140px', paddingBottom: '80px', flex: 1 }}>
       <Outlet />
     </main>
     <Footer />

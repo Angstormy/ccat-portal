@@ -33,3 +33,23 @@ build/
 # OS files
 .DS_Store
 Thumbs.db
+# Added by code-review-graph
+.code-review-graph/
+
+# IDE and Agent Directories
+.claude/
+.gemini/
+.kiro/
+.qoder/
+.vscode/
+
+# Agent Rules and Configs
+.cursorrules
+.windsurfrules
+.mcp.json
+.opencode.json
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+QODER.md
+.github/code-review-graph.instruction.md
